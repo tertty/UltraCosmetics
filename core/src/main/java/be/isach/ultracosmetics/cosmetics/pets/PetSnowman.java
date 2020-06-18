@@ -22,6 +22,7 @@ public class PetSnowman extends Pet {
             if (getOwner() != null && getEntity() != null) {
                 Snowman snowman = (Snowman) getEntity();
                 snowman.setDerp(false);
+                snowman.setSwimming(true);
             }
         }, 30);
     }

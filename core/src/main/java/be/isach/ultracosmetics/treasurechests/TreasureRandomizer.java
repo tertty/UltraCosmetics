@@ -28,6 +28,7 @@ public class TreasureRandomizer {
     private static final int MORPHS_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Morphs.Chance");
     private static final int PETS_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Pets.Chance");
     private static final int EFFECTS_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Effects.Chance");
+    private static final int DEATHS_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Deaths.Chance");
     private static final int MOUNTS_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Mounts.Chance");
     private static final int HATS_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Hats.Chance");
     private static final int HELMET_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Suits.Chance") / 4;
@@ -40,6 +41,7 @@ public class TreasureRandomizer {
     private static List<GadgetType> gadgetList = new ArrayList<>();
     private static List<GadgetType> ammoList = new ArrayList<>();
     private static List<ParticleEffectType> particleEffectList = new ArrayList<>();
+    private static List<DeathType> deathEffectList = new ArrayList<>();
     private static List<MountType> mountList = new ArrayList<>();
     private static List<PetType> petList = new ArrayList<>();
     private static List<MorphType> morphList = new ArrayList<>();
@@ -91,6 +93,11 @@ public class TreasureRandomizer {
                 if (!player.hasPermission(type.getPermission())
                         && type.canBeFound())
                     particleEffectList.add(type);
+        if (deathEffectList.isEmpty())
+            for (DeathType type : DeathType.enabled())
+                if (!player.hasPermission(type.getPermission())
+                        && type.canBeFound())
+                    deathEffectList.add(type);
         if (mountList.isEmpty())
             for (MountType type : MountType.enabled())
                 if (!player.hasPermission(type.getPermission())
@@ -158,6 +165,8 @@ public class TreasureRandomizer {
         }
         if (!Category.EFFECTS.isEnabled())
             particleEffectList.clear();
+        if (!Category.DEATHS.isEnabled())
+            deathEffectList.clear();
         if (!Category.PETS.isEnabled())
             petList.clear();
         if (!Category.MORPHS.isEnabled())
@@ -182,6 +191,10 @@ public class TreasureRandomizer {
                 && !particleEffectList.isEmpty()
                 && (boolean) SettingsManager.getConfig().get("TreasureChests.Loots.Effects.Enabled"))
             setupChance(RESULT_TYPES, EFFECTS_CHANCE, ResultType.EFFECT);
+        if (Category.DEATHS.isEnabled()
+                && !deathEffectList.isEmpty()
+                && (boolean) SettingsManager.getConfig().get("TreasureChests.Loots.Deaths.Enabled"))
+            setupChance(RESULT_TYPES, DEATHS_CHANCE, ResultType.DEATH);
         if (Category.GADGETS.isEnabled()) {
             if (!ammoList.isEmpty()
                     && UltraCosmeticsData.get().isAmmoEnabled()
@@ -292,6 +305,9 @@ public class TreasureRandomizer {
                 case EFFECT:
                     giveRandomEffect();
                     break;
+                case DEATH:
+                    giveRandomDeath();
+                    break;
                 case HAT:
                     giveRandomHat();
                     break;
@@ -326,6 +342,7 @@ public class TreasureRandomizer {
                     && (!d("Mounts") || mountList.isEmpty())
                     && (!d("Hats") || hatList.isEmpty())
                     && (!d("Effects") || particleEffectList.isEmpty())
+                    && (!d("Deaths") || deathEffectList.isEmpty())
                     || RESULT_TYPES.isEmpty())
                 giveNothing();
             else
@@ -347,6 +364,7 @@ public class TreasureRandomizer {
         ammoList.clear();
         gadgetList.clear();
         particleEffectList.clear();
+        deathEffectList.clear();
         mountList.clear();
         morphList.clear();
         hatList.clear();
@@ -512,6 +530,18 @@ public class TreasureRandomizer {
             Bukkit.broadcastMessage((getMessage("TreasureChests.Loots.Effects.Message.message")).replace("%name%", player.getName()).replace("%effect%", (UltraCosmeticsData.get().arePlaceholdersColored()) ? particleEffect.getName() : TextUtil.filterColor(particleEffect.getName())));
     }
 
+    public void giveRandomDeath() {
+        int i = random.nextInt(deathEffectList.size());
+        DeathType particleEffect = deathEffectList.get(i);
+        name = MessageManager.getMessage("Treasure-Chests-Loot.Death").replace("%effect%", particleEffect.getName());
+        deathEffectList.remove(i);
+        itemStack = particleEffect.getMaterial().parseItem();
+        givePermission(particleEffect.getPermission());
+        spawnRandomFirework(loc);
+        if (SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Deaths.Message.enabled"))
+            Bukkit.broadcastMessage((getMessage("TreasureChests.Loots.Deaths.Message.message")).replace("%name%", player.getName()).replace("%effect%", (UltraCosmeticsData.get().arePlaceholdersColored()) ? particleEffect.getName() : TextUtil.filterColor(particleEffect.getName())));
+    }
+
     public void giveRandomMorph() {
         int i = random.nextInt(morphList.size());
         MorphType morph = morphList.get(i);
@@ -576,6 +606,7 @@ public class TreasureRandomizer {
         MORPH,
         MOUNT,
         EFFECT,
+        DEATH,
         PET,
         HAT,
         HELMET,

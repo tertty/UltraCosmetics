@@ -4,7 +4,7 @@ allprojects {
     apply plugin: 'idea'
 
     group = 'be.isach'
-    version = '2.5.7-RELEASE'
+    version = '2.5.7-TAYLORS-BREW'
 
     compileJava.options.encoding = 'UTF-8'
 

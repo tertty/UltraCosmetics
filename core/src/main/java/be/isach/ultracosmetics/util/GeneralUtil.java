@@ -82,6 +82,11 @@ public class GeneralUtil {
         for (ParticleEffectType effect : ParticleEffectType.values())
             writer.println("  - " + effect.getPermission());
         writer.println("");
+        writer.println("Death Effects:");
+        writer.println("  - ultracosmetics.deatheffects.*");
+        for (DeathType effect : DeathType.values())
+            writer.println("  - " + effect.getPermission());
+        writer.println("");
         writer.println("Suits:");
         writer.println("  - ultracosmetics.suits.*");
         for (CosmeticType cosmeticType : SuitType.values()) {

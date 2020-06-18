@@ -5,6 +5,7 @@ Check-For-Updates: true
 Categories-Enabled:
   Gadgets: true
   Particle-Effects: true
+  Death-Effects: true
   Mounts: true
   Pets: true
   Morphs: true
@@ -23,6 +24,9 @@ Categories:
     Cooldown-In-ActionBar: true
   Particle-Effects:
     Main-Menu-Item: '399:0'
+    Go-Back-Arrow: true
+  Death-Effects:
+    Main-Menu-Item: '397:0'
     Go-Back-Arrow: true
   Mounts:
     Main-Menu-Item: '329:0'

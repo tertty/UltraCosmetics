@@ -88,6 +88,7 @@ public class MessageManager {
         addMessage("Menus.Morphs", "&lMorphs");
         addMessage("Menus.Hats", "&lHats");
         addMessage("Menus.Particle-Effects", "&lParticle Effects");
+        addMessage("Menus.Death-Effects", "&lDeath Effects");
         addMessage("Menus.Suits", "&lSuits");
         addMessage("Menus.Emotes", "&lEmotes");
         addMessage("Menus.Buy-Ammo", "&lBuy Ammo");
@@ -204,6 +205,11 @@ public class MessageManager {
         addMessage("Particle-Effects.FlameFairy.name", "&6&lFlame Fairy");
         addMessage("Particle-Effects.MagicalRods.name", "&8&lMagical Rods");
         addMessage("Particle-Effects.FireWaves.name", "&e&lFire Waves");
+
+        //DEATHS
+        addMessage("Death-Effects.Summon", "%prefix% &9You summoned %effectname%");
+        addMessage("Death-Effects.Unsummon", "%prefix% &9You unsummoned %effectname%");
+        addMessage("Death-Effects.DeathBomb.name", "&b&lBOMBINONICON!");
 
         // PETS
         addMessage("Pets.Piggy.menu-name", "&d&lPiggy");
@@ -429,6 +435,7 @@ public class MessageManager {
         //MENU
         addMessage("Menu.Gadgets", "&9&lGadgets");
         addMessage("Menu.Particle-Effects", "&b&lParticle Effects");
+        addMessage("Menu.Death-Effects", "&b&lDeath Effects");
         addMessage("Menu.Mounts", "&6&lMounts");
         addMessage("Menu.Pets", "&a&lPets");
         addMessage("Menu.Morphs", "&2&lMorphs");

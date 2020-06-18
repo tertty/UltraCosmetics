@@ -142,6 +142,11 @@ permissions:
     default: op
   ultracosmetics.gadgets.trampoline:
     default: op
+  ultracosmetics.deatheffects.*:
+    children:
+      - ultracosmetics.deatheffects.deathbomb
+  ultracosmetics.deatheffects.deathbomb:
+    default: op
   ultracosmetics.particleeffects.*:
     children:
       - ultracosmetics.particleeffects.raincloud

@@ -32,6 +32,8 @@ public class PlaceholderHook extends PlaceholderExpansion {
                 return ultraPlayer.getCurrentMount() == null ? "None" : ultraPlayer.getCurrentMount().getType().getName();
             case "current_particleeffect":
                 return ultraPlayer.getCurrentParticleEffect() == null ? "None" : ultraPlayer.getCurrentParticleEffect().getType().getName();
+            case "current_deatheffect":
+                return ultraPlayer.getCurrentDeathEffect() == null ? "None" : ultraPlayer.getCurrentDeathEffect().getType().getName();
             case "current_pet":
                 return ultraPlayer.getCurrentPet() == null ? "None" : ultraPlayer.getCurrentPet().getType().getName();
             case "current_morph":

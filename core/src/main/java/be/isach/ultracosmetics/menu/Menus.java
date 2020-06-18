@@ -17,6 +17,7 @@ public class Menus {
     private final MenuMorphs morphsMenu;
     private final MenuMounts mountsMenu;
     private final MenuParticleEffects effectsMenu;
+    private final MenuDeathEffects deathsMenu;
     private final MenuPets petsMenu;
     private final MenuSuits suitsMenu;
     private final MenuMain mainMenu;
@@ -29,6 +30,7 @@ public class Menus {
         this.emotesMenu = new MenuEmotes(ultraCosmetics);
         this.gadgetsMenu = new MenuGadgets(ultraCosmetics);
         this.effectsMenu = new MenuParticleEffects(ultraCosmetics);
+        this.deathsMenu = new MenuDeathEffects(ultraCosmetics);
         this.hatsMenu = new MenuHats(ultraCosmetics);
         this.morphsMenu = new MenuMorphs(ultraCosmetics);
         this.mountsMenu = new MenuMounts(ultraCosmetics);
@@ -63,6 +65,10 @@ public class Menus {
 
     public MenuParticleEffects getEffectsMenu() {
         return effectsMenu;
+    }
+
+    public MenuDeathEffects getDeathEffectsMenu() {
+        return deathsMenu;
     }
 
     public MenuPets getPetsMenu() {

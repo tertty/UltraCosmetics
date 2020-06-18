@@ -12,6 +12,7 @@ import be.isach.ultracosmetics.cosmetics.hats.Hat;
 import be.isach.ultracosmetics.cosmetics.morphs.Morph;
 import be.isach.ultracosmetics.cosmetics.mounts.Mount;
 import be.isach.ultracosmetics.cosmetics.particleeffects.ParticleEffect;
+import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffect;
 import be.isach.ultracosmetics.cosmetics.pets.Pet;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
@@ -68,6 +69,7 @@ public class UltraPlayer {
     private Gadget currentGadget;
     private Mount currentMount;
     private ParticleEffect currentParticleEffect;
+    private DeathEffect currentDeathEffect;
     private Pet currentPet;
     private TreasureChest currentTreasureChest;
     private Morph currentMorph;
@@ -362,6 +364,7 @@ public class UltraPlayer {
     public boolean clear() {
         boolean toReturn = currentGadget != null
                 || currentParticleEffect != null
+                || currentDeathEffect != null
                 || currentPet != null
                 || currentMount != null
                 || currentTreasureChest != null
@@ -376,6 +379,7 @@ public class UltraPlayer {
         }
         removeGadget();
         removeParticleEffect();
+        removeDeathEffect();
         removePet();
         removeMount();
         removeTreasureChest();
@@ -389,6 +393,8 @@ public class UltraPlayer {
         switch (category) {
             case EFFECTS:
                 return (T) getCurrentParticleEffect();
+            case DEATHS:
+                return (T) getCurrentDeathEffect();
             case EMOTES:
                 return (T) getCurrentEmote();
             case GADGETS:
@@ -452,6 +458,18 @@ public class UltraPlayer {
 
         currentParticleEffect.clear();
         setCurrentParticleEffect(null);
+    }
+
+    /**
+     * Removes current Death Effect
+     */
+    public void removeDeathEffect() {
+        if (currentDeathEffect == null) {
+            return;
+        }
+
+        currentDeathEffect.clear();
+        setCurrentDeathEffect(null);
     }
 
     /**
@@ -807,6 +825,16 @@ public class UltraPlayer {
             cosmeticsProfile.setEnabledEffect(currentParticleEffect == null ? null : currentParticleEffect.getType());
     }
 
+    public DeathEffect getCurrentDeathEffect() {
+        return currentDeathEffect;
+    }
+
+    public void setCurrentDeathEffect(DeathEffect currentDeathEffect) {
+        this.currentDeathEffect = currentDeathEffect;
+        if (!isQuitting())
+            cosmeticsProfile.setEnabledDeath(currentDeathEffect == null ? null : currentDeathEffect.getType());
+    }
+
     public Pet getCurrentPet() {
         return currentPet;
     }
@@ -853,6 +881,8 @@ public class UltraPlayer {
         switch (category) {
             case EFFECTS:
                 removeParticleEffect();
+            case DEATHS:
+                removeDeathEffect();
             case EMOTES:
                 removeEmote();
             case GADGETS:

@@ -41,6 +41,7 @@ public class CosmeticManager {
         GadgetType.register();
         MountType.register();
         ParticleEffectType.register();
+        DeathType.register();
         PetType.register();
         HatType.register();
         SuitType.register();
@@ -82,6 +83,12 @@ public class CosmeticManager {
             ultraCosmetics.getConfig().addDefault("Particle-Effects." + particleEffect.getConfigName() + ".Can-Be-Found-In-Treasure-Chests", true, "if true, it'll be possible to find", "it in treasure chests");
         }
 
+        for (DeathType deathEffect : DeathType.values()) {
+            ultraCosmetics.getConfig().addDefault("Death-Effects." + deathEffect.getConfigName() + ".Enabled", true, "if true, the effect will be enabled.");
+            ultraCosmetics.getConfig().addDefault("Death-Effects." + deathEffect.getConfigName() + ".Show-Description", true, "if true, the description will be showed.");
+            ultraCosmetics.getConfig().addDefault("Death-Effects." + deathEffect.getConfigName() + ".Can-Be-Found-In-Treasure-Chests", true, "if true, it'll be possible to find", "it in treasure chests");
+        }
+
         for (PetType pet : PetType.values()) {
             ultraCosmetics.getConfig().addDefault("Pets." + pet.getConfigName() + ".Enabled", true, "if true, the pet will be enabled.");
             ultraCosmetics.getConfig().addDefault("Pets." + pet.getConfigName() + ".Show-Description", true, "if true, the description will be showed.");
@@ -119,6 +126,7 @@ public class CosmeticManager {
         GadgetType.checkEnabled();
         MountType.checkEnabled();
         ParticleEffectType.checkEnabled();
+        DeathType.checkEnabled();
         PetType.checkEnabled();
         HatType.checkEnabled();
         SuitType.checkEnabled();

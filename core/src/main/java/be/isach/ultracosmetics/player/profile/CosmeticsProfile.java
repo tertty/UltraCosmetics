@@ -31,6 +31,7 @@ public class CosmeticsProfile {
     private MorphType enabledMorph;
     private MountType enabledMount;
     private ParticleEffectType enabledEffect;
+    private DeathType enabledDeath;
     private Map<ArmorSlot, SuitType> enabledSuitParts = new HashMap<>();
 
     public CosmeticsProfile(UUID uuid) {
@@ -53,6 +54,10 @@ public class CosmeticsProfile {
             }
             try {
                 setEnabledEffect(ParticleEffectType.valueOf(s.getString("effect")));
+            } catch (Exception exc) {
+            }
+            try {
+                setEnabledDeath(DeathType.valueOf(s.getString("death")));
             } catch (Exception exc) {
             }
             try {
@@ -156,6 +161,12 @@ public class CosmeticsProfile {
                 && enabledEffect.isEnabled())
             enabledEffect.equip(ultraPlayer, ultraCosmetics);
 
+        // Death Effect
+        if (enabledDeath != null
+                && enabledDeath.getCategory().isEnabled()
+                && enabledDeath.isEnabled())
+            enabledDeath.equip(ultraPlayer, ultraCosmetics);
+
         // Suit
         for (ArmorSlot armorSlot : ArmorSlot.values()) {
             SuitType suitPart = enabledSuitParts.get(armorSlot);
@@ -182,6 +193,7 @@ public class CosmeticsProfile {
 
         settingsManager.set("enabled.gadget", enabledGadget != null ? enabledGadget.getConfigName() : "none");
         settingsManager.set("enabled.effect", enabledEffect != null ? enabledEffect.getConfigName() : "none");
+        settingsManager.set("enabled.death", enabledDeath != null ? enabledDeath.getConfigName() : "none");
         settingsManager.set("enabled.emote", enabledEmote != null ? enabledEmote.getConfigName() : "none");
         settingsManager.set("enabled.hat", enabledHat != null ? enabledHat.getConfigName() : "none");
         settingsManager.set("enabled.morph", enabledMorph != null ? enabledMorph.getConfigName() : "none");
@@ -278,6 +290,14 @@ public class CosmeticsProfile {
 
     public void setEnabledEffect(ParticleEffectType enabledEffect) {
         this.enabledEffect = enabledEffect;
+    }
+
+    public DeathType getEnabledDeath() {
+        return enabledDeath;
+    }
+
+    public void setEnabledDeath(DeathType enabledDeath) {
+        this.enabledDeath = enabledDeath;
     }
 
     public PetType getEnabledPet() {

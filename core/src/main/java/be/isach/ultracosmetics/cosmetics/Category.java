@@ -57,6 +57,17 @@ public enum Category {
             return ParticleEffectType.enabled();
         }
     },
+    DEATHS("Death-Effects", "Summon", "Unsummon", "Clear-Effect", "%effectname%", "Summon", "Unsummon") {
+        @Override
+        public CosmeticMenu getMenu(UltraCosmetics ultraCosmetics) {
+            return ultraCosmetics.getMenus().getDeathEffectsMenu();
+        }
+
+        @Override
+        public List<? extends CosmeticType> getEnabled() {
+            return DeathType.enabled();
+        }
+    },
     MOUNTS("Mounts", "Spawn", "Despawn", "Clear-Mount", "%mountname%", "Spawn", "Despawn") {
         @Override
         public CosmeticMenu getMenu(UltraCosmetics ultraCosmetics) {

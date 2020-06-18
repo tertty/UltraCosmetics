@@ -136,3 +136,5 @@ testserver
 testserver/*
 
 hts*
+.vscode/settings.json
+.vscode/tasks.json
