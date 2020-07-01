@@ -24,8 +24,8 @@ public class DeathType extends CosmeticMatType<DeathEffect>{
     }
 
     public static DeathType valueOf(String s) {
-        for (DeathType DeathType : VALUES) {
-            if (DeathType.getConfigName().equalsIgnoreCase(s)) return DeathType;
+        for (DeathType deathType : VALUES) {
+            if (deathType.getConfigName().equalsIgnoreCase(s)) return deathType;
         }
         return null;
     }
@@ -54,7 +54,7 @@ public class DeathType extends CosmeticMatType<DeathEffect>{
     }
 
     public static void register() {
-        new DeathType("ultracosmetics.deatheffects.deathbomb", "BOMBINOMICON!", 1, Particles.SNOW_SHOVEL, UCMaterial.SNOWBALL, DeathBomb.class, "&7&oExplode spectacularly on death.", ServerVersion.v1_8_R1);
+        new DeathType("ultracosmetics.deatheffects.deathbomb", "DeathBomb", 1, Particles.FIREWORKS_SPARK, UCMaterial.BOOK, DeathBomb.class, "&7&oExplode spectacularly on death.", ServerVersion.v1_8_R1);
         // new ParticleEffectType("ultracosmetics.particleeffects.bloodhelix", "BloodHelix", 1, Particles.REDSTONE, UCMaterial.REDSTONE, ParticleEffectBloodHelix.class, "&7&oAncient legend says this magic\n&7&oempowers the blood of its user,\n&7&ogiving them godly powers..", ServerVersion.v1_8_R1);
         // new ParticleEffectType("ultracosmetics.particleeffects.frostlord", "FrostLord", 1, Particles.SNOW_SHOVEL, UCMaterial.PACKED_ICE, ParticleEffectFrostLord.class, "&7&oI am The Almighty Frostlord!", ServerVersion.v1_8_R1);
         // new ParticleEffectType("ultracosmetics.particleeffects.flamerings", "FlameRings", 1, Particles.FLAME, UCMaterial.BLAZE_POWDER, ParticleEffectFlameRings.class, "&7&oWatch out! They are hot!", ServerVersion.v1_8_R1);

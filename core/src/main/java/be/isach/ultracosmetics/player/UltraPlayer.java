@@ -380,7 +380,7 @@ public class UltraPlayer {
         }
         removeGadget();
         removeParticleEffect();
-        removeDeathEffect();
+        //removeDeathEffect();
         removePet();
         removeMount();
         removeTreasureChest();
@@ -832,7 +832,7 @@ public class UltraPlayer {
 
     public void setCurrentDeathEffect(DeathEffect currentDeathEffect) {
         this.currentDeathEffect = currentDeathEffect;
-        if (!isQuitting())
+        if (!isQuitting() && cosmeticsProfile != null && UltraCosmeticsData.get().areCosmeticsProfilesEnabled())
             cosmeticsProfile.setEnabledDeath(currentDeathEffect == null ? null : currentDeathEffect.getType());
     }
 

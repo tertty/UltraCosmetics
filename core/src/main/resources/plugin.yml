@@ -15,6 +15,7 @@ permissions:
     children:
       - ultracosmetics.pets.*
       - ultracosmetics.particleeffects.*
+      - ultracosmetics.deatheffects.*
       - ultracosmetics.mounts.*
       - ultracosmetics.morphs.*
       - ultracosmetics.command.*
@@ -272,6 +273,7 @@ permissions:
       - ultracosmetics.pets.christmaself
       - ultracosmetics.pets.mooshroom
       - ultracosmetics.pets.rename
+      - ultracosmetics.pets.jihad
   ultracosmetics.pets.piggy:
     default: op
   ultracosmetics.pets.sheep:
@@ -297,6 +299,8 @@ permissions:
   ultracosmetics.pets.christmaself:
     default: op
   ultracosmetics.pets.mooshroom:
+    default: op
+  ultracosmetics.pets.jihad:
     default: op
   ultracosmetics.morphs.*:
     children:

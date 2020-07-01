@@ -85,7 +85,7 @@ public class CosmeticManager {
         for (DeathType deathEffect : DeathType.values()) {
             ultraCosmetics.getConfig().addDefault("Death-Effects." + deathEffect.getConfigName() + ".Enabled", true, "if true, the effect will be enabled.");
             ultraCosmetics.getConfig().addDefault("Death-Effects." + deathEffect.getConfigName() + ".Show-Description", true, "if true, the description will be showed.");
-            ultraCosmetics.getConfig().addDefault("Death-Effects." + deathEffect.getConfigName() + ".Can-Be-Found-In-Treasure-Chests", true, "if true, it'll be possible to find", "it in treasure chests");
+            ultraCosmetics.getConfig().addDefault("Death-Effects." + deathEffect.getConfigName() + ".Can-Be-Found-In-Treasure-Chests", false, "if true, it'll be possible to find", "it in treasure chests");
         }
 
         for (PetType pet : PetType.values()) {

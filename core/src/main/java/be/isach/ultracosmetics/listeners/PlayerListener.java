@@ -33,6 +33,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.Arrays;
 import java.util.List;
 
+import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffect;
+
 /**
  * Player listeners.
  *
@@ -273,6 +275,7 @@ public class PlayerListener implements Listener {
         });
         if (ultraPlayer.getCurrentEmote() != null)
             event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());
+
         ultraPlayer.clear();
     }
 

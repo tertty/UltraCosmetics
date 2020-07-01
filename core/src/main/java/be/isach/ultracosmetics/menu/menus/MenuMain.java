@@ -29,6 +29,9 @@ public class MenuMain extends Menu {
         super(ultraCosmetics);
 
         switch (Category.enabledSize()) {
+            case 9:
+                layout = new int[]{10, 12, 14, 16, 26, 28, 30, 32, 34};
+                break;
             case 8:
                 layout = new int[]{10, 12, 14, 16, 28, 30, 32, 34};
                 break;
@@ -89,6 +92,7 @@ public class MenuMain extends Menu {
         ItemStack itemStack = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Categories.Clear-Cosmetic-Item"), message);
         putItem(inventory, inventory.getSize() - 5, itemStack, data -> {
             player.clear();
+            player.removeDeathEffect();
             open(player);
         });
 
