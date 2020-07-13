@@ -62,7 +62,7 @@ public class PlayerFollower implements Runnable, IPlayerFollower {
             try {
                 int distance = (int) Bukkit.getPlayer(player.getName()).getLocation().distance(petEntity.getBukkitEntity().getLocation());
 
-                if (distance > 10 && petEntity.valid && player.isOnGround()) {
+                if ((distance > 10 && petEntity.valid && player.isOnGround()) || (pet.getType().getEntityType() == EntityType.WITHER) && player.isOnGround()) {
                     petEntity.setLocation(targetLocation.getBlockX(), targetLocation.getBlockY(), targetLocation.getBlockZ(), 0, 0);
                 }
 
@@ -75,10 +75,6 @@ public class PlayerFollower implements Runnable, IPlayerFollower {
 
                     ((EntityInsentient) petEntity).getNavigation().a(path, speed);
                     ((EntityInsentient) petEntity).getNavigation().a(speed);
-                }
-
-                if (pet.getType().getEntityType() == EntityType.WITHER) {
-                    petEntity.setLocation(targetLocation.getBlockX(), targetLocation.getBlockY(), targetLocation.getBlockZ(), 0, 0);
                 }
 
             } catch (IllegalArgumentException exception) {
