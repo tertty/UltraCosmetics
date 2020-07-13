@@ -76,9 +76,14 @@ public class PlayerFollower implements Runnable, IPlayerFollower {
                     ((EntityInsentient) petEntity).getNavigation().a(path, speed);
                     ((EntityInsentient) petEntity).getNavigation().a(speed);
                 }
+
+                if (pet.getType().getEntityType() == EntityType.WITHER) {
+                    petEntity.setLocation(targetLocation.getBlockX(), targetLocation.getBlockY(), targetLocation.getBlockZ(), 0, 0);
+                }
+
             } catch (IllegalArgumentException exception) {
                 petEntity.setLocation(targetLocation.getBlockX(), targetLocation.getBlockY(), targetLocation.getBlockZ(), 0, 0);
-                //exception.printStackTrace();
+                //exception.printStackTrace(); //re-comment this when done
             }
         });
     }
