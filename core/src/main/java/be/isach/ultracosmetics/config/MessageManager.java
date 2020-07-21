@@ -145,8 +145,8 @@ public class MessageManager {
         addMessage("Gadgets.Lore", "&9Gadget");
 
         // MOUNTS
-        addMessage("Mounts.DruggedHorse.menu-name", "&2&lDrugged Horse");
-        addMessage("Mounts.DruggedHorse.entity-displayname", "&l%playername%'s drugged horse");
+        addMessage("Mounts.DruggedHorse.menu-name", "&2&lTrippy Horse");
+        addMessage("Mounts.DruggedHorse.entity-displayname", "&l%playername%'s trippy horse");
         addMessage("Mounts.InfernalHorror.menu-name", "&4&lInfernal Horror");
         addMessage("Mounts.InfernalHorror.entity-displayname", "&l%playername%'s infernal horror");
         addMessage("Mounts.GlacialSteed.menu-name", "&b&lGlacial Steed");
