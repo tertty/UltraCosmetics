@@ -87,8 +87,6 @@ public class DeathBomb extends DeathEffect {
             i += 0.05;
 
             SoundUtil.playSound(location, Sounds.EXPLODE, 2.0f, 1.0f);
-
-            Bukkit.broadcastMessage("This guy eatin beans");
         }
 
 }

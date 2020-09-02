@@ -312,6 +312,16 @@ public class PlayerListener implements Listener {
             event.setCancelled(true);
     }
 
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerBedEnter(PlayerBedEnterEvent event) {
+
+        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
+
+        if(ultraPlayer.getCurrentPet() != null){
+            event.setCancelled(false);
+        }
+    }
+
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent event) {
         if (SettingsManager.getConfig().getList("Disabled-Commands").contains(event.getMessage().split(" ")[0].replace("/", "").toLowerCase())) {
