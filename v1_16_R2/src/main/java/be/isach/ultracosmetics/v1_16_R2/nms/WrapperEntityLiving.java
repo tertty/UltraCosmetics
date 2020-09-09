@@ -17,42 +17,42 @@ public class WrapperEntityLiving extends WrapperEntity {
 
     // Corresponds to yHeadRot
     public float getRotationYawHead() {
-        return handle.aJ;
+        return handle.aC;
     }
 
     // Corresponds to yHeadRot
     public void setRotationYawHead(float rotationYawHead) {
-        handle.aJ = rotationYawHead;
+        handle.aC = rotationYawHead;
     }
 
     // Corresponds to yBodyRot
     public float getRenderYawOffset() {
-        return handle.aH;
+        return handle.aA;
     }
 
     // Corresponds to yBodyRot
     public void setRenderYawOffset(float renderYawOffset) {
-        handle.aH = renderYawOffset;
+        handle.aA = renderYawOffset;
     }
 
     // Corresponds to xxa
     public float getMoveStrafing() {
-        return handle.aY;
+        return handle.aR;
     }
 
     // Corresponds to xxa
     public void setMoveStrafing(float moveStrafing) {
-        handle.aY = moveStrafing;
+        handle.aR = moveStrafing;
     }
 
     // Corresponds to zza
     public float getMoveForward() {
-        return handle.ba;
+        return handle.aT;
     }
 
     // Corresponds to zza
     public void setMoveForward(float moveForward) {
-        handle.ba = moveForward;
+        handle.aT = moveForward;
     }
 
     // Corresponds to jumping
@@ -67,12 +67,12 @@ public class WrapperEntityLiving extends WrapperEntity {
 
     // Corresponds to yBodyRotO
     public float getJumpMovementFactor() {
-        return handle.aI;
+        return handle.aB;
     }
 
     // Corresponds to yBodyRotO
     public void setJumpMovementFactor(float jumpMovementFactor) {
-        handle.aI = jumpMovementFactor;
+        handle.aB = jumpMovementFactor;
     }
 
     // Corresponds to animationSpeedOld

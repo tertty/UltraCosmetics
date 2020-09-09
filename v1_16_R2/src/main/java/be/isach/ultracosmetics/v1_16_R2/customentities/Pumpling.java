@@ -55,9 +55,9 @@ public class Pumpling extends EntityZombie implements IPetCustomEntity {
     }
 
     @Override
-    protected void a(BlockPosition blockposition, IBlockData iblockdata) {
+    protected void b(BlockPosition blockposition, IBlockData iblockdata) {
         if (isCustomEntity()) return;
-        super.a(blockposition, iblockdata);
+        super.b(blockposition, iblockdata);
     }
 
     @Override

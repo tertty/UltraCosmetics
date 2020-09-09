@@ -5,15 +5,14 @@ import be.isach.ultracosmetics.v1_16_R2.EntityBase;
 import be.isach.ultracosmetics.v1_16_R2.nms.WrapperEntityHuman;
 import be.isach.ultracosmetics.v1_16_R2.nms.WrapperEntityInsentient;
 import net.minecraft.server.v1_16_R2.*;
+import org.bukkit.entity.Entity;
 
 /**
  * @author iSach
  */
-public class RideableSpider extends EntitySpider implements IMountCustomEntity, EntityBase {
+public class CustomSlime extends EntitySlime implements IMountCustomEntity, EntityBase {
 
-    boolean isOnGround;
-
-    public RideableSpider(EntityTypes<? extends EntitySpider> entitytypes, World world) {
+    public CustomSlime(EntityTypes<? extends EntitySlime> entitytypes, World world) {
         super(entitytypes, world);
     }
 
@@ -84,14 +83,11 @@ public class RideableSpider extends EntitySpider implements IMountCustomEntity, 
 
     @Override
     //public void a(float sideMot, float forMot, float f2) {
-    public void f(Vec3D vec3D) {
+    public void g(Vec3D vec3D) {
         if (!CustomEntities.customEntities.contains(this)) {
-            super.f(vec3D);
+            super.f((float) vec3D.x, (float) vec3D.y);
             return;
         }
-
-        super.f(vec3D);
-
         EntityHuman passenger = null;
         if (!getPassengers().isEmpty()) {
             passenger = (EntityHuman) getPassengers().get(0);
@@ -100,18 +96,23 @@ public class RideableSpider extends EntitySpider implements IMountCustomEntity, 
     }
 
     @Override
-    public org.bukkit.entity.Entity getEntity() {
-        return getBukkitEntity();
+    public String getName() {
+        return LocaleLanguage.a().a("entity.Slime.name");
+    }
+
+    @Override
+    protected void initPathfinder() {
+        goalSelector.a(5, new CustomSlimeJumpGoal(this));
     }
 
     @Override
     public void g_(float sideMot, float forMot) {
-        super.f(new Vec3D(sideMot, 0, forMot));
+        super.g(new Vec3D(sideMot, 0, forMot));
     }
 
     @Override
     public float getSpeed() {
-        return 1;
+        return 1.75f;
     }
 
     @Override
@@ -120,8 +121,8 @@ public class RideableSpider extends EntitySpider implements IMountCustomEntity, 
     }
 
     @Override
-    public String getName() {
-        return LocaleLanguage.a().a("entity.Spider.name");
+    public Entity getEntity() {
+        return getBukkitEntity();
     }
 
     @Override

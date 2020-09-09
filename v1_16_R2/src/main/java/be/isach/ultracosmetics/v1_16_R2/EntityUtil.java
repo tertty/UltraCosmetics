@@ -186,7 +186,7 @@ public class EntityUtil implements IEntityUtil {
 
         if (loc == null) return;
 
-        ec.aK = loc.getYaw();
+        ec.ak = (int) loc.getYaw();
         PathEntity path = ec.getNavigation().a(loc.getX(), loc.getY(), loc.getZ(), 1);
         ec.getNavigation().a(path, 2);
     }

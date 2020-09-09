@@ -5,14 +5,15 @@ import be.isach.ultracosmetics.v1_16_R2.EntityBase;
 import be.isach.ultracosmetics.v1_16_R2.nms.WrapperEntityHuman;
 import be.isach.ultracosmetics.v1_16_R2.nms.WrapperEntityInsentient;
 import net.minecraft.server.v1_16_R2.*;
-import org.bukkit.entity.Entity;
 
 /**
  * @author iSach
  */
-public class CustomSlime extends EntitySlime implements IMountCustomEntity, EntityBase {
+public class RideableSpider extends EntitySpider implements IMountCustomEntity, EntityBase {
 
-    public CustomSlime(EntityTypes<? extends EntitySlime> entitytypes, World world) {
+    boolean isOnGround;
+
+    public RideableSpider(EntityTypes<? extends EntitySpider> entitytypes, World world) {
         super(entitytypes, world);
     }
 
@@ -83,11 +84,14 @@ public class CustomSlime extends EntitySlime implements IMountCustomEntity, Enti
 
     @Override
     //public void a(float sideMot, float forMot, float f2) {
-    public void f(Vec3D vec3D) {
+    public void g(Vec3D vec3D) {
         if (!CustomEntities.customEntities.contains(this)) {
-            super.f((float) vec3D.x, (float) vec3D.y);
+            super.g(vec3D);
             return;
         }
+
+        super.g(vec3D);
+
         EntityHuman passenger = null;
         if (!getPassengers().isEmpty()) {
             passenger = (EntityHuman) getPassengers().get(0);
@@ -96,23 +100,18 @@ public class CustomSlime extends EntitySlime implements IMountCustomEntity, Enti
     }
 
     @Override
-    public String getName() {
-        return LocaleLanguage.a().a("entity.Slime.name");
-    }
-
-    @Override
-    protected void initPathfinder() {
-        goalSelector.a(5, new CustomSlimeJumpGoal(this));
+    public org.bukkit.entity.Entity getEntity() {
+        return getBukkitEntity();
     }
 
     @Override
     public void g_(float sideMot, float forMot) {
-        super.f(new Vec3D(sideMot, 0, forMot));
+        super.g(new Vec3D(sideMot, 0, forMot));
     }
 
     @Override
     public float getSpeed() {
-        return 1.75f;
+        return 1;
     }
 
     @Override
@@ -121,8 +120,8 @@ public class CustomSlime extends EntitySlime implements IMountCustomEntity, Enti
     }
 
     @Override
-    public Entity getEntity() {
-        return getBukkitEntity();
+    public String getName() {
+        return LocaleLanguage.a().a("entity.Spider.name");
     }
 
     @Override
