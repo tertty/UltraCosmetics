@@ -13,6 +13,7 @@ import net.minecraft.server.v1_16_R2.EntityTypes;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_16_R2.CraftWorld;
 import org.bukkit.craftbukkit.v1_16_R2.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
 import org.bukkit.entity.ArmorStand;
@@ -78,7 +79,7 @@ public abstract class CustomEntityPet extends Pet {
 
             customEntity.getEntity().setPassenger(armorStand);
             EntitySpawningManager.setBypass(true);
-            ((org.bukkit.craftbukkit.v1_16_R2.CraftWorld) getPlayer().getWorld()).getHandle().addEntity(getCustomEntity());
+            ((CraftWorld) getPlayer().getWorld()).getHandle().addEntity(getCustomEntity());
             EntitySpawningManager.setBypass(false);
         });
 

@@ -81,10 +81,12 @@ public class CustomSlime extends EntitySlime implements IMountCustomEntity, Enti
         }
     }
 
+    // Corresponds to travel(Vec3D)
     @Override
     //public void a(float sideMot, float forMot, float f2) {
     public void g(Vec3D vec3D) {
         if (!CustomEntities.customEntities.contains(this)) {
+            // Corresponds to tickHeadTurn(float, float)
             super.f((float) vec3D.x, (float) vec3D.y);
             return;
         }
@@ -107,7 +109,7 @@ public class CustomSlime extends EntitySlime implements IMountCustomEntity, Enti
 
     @Override
     public void g_(float sideMot, float forMot) {
-        super.g(new Vec3D(sideMot, 0, forMot));
+        super.a(new Vec3D(sideMot, 0, forMot));
     }
 
     @Override

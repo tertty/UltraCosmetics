@@ -82,15 +82,17 @@ public class RideableSpider extends EntitySpider implements IMountCustomEntity, 
         }
     }
 
+    // Corresponds to travel(Vec3D)
     @Override
     //public void a(float sideMot, float forMot, float f2) {
     public void g(Vec3D vec3D) {
         if (!CustomEntities.customEntities.contains(this)) {
+            // Corresponds to travel(Vec3D)
             super.g(vec3D);
             return;
         }
 
-        super.g(vec3D);
+        super.a(vec3D);
 
         EntityHuman passenger = null;
         if (!getPassengers().isEmpty()) {
@@ -106,7 +108,7 @@ public class RideableSpider extends EntitySpider implements IMountCustomEntity, 
 
     @Override
     public void g_(float sideMot, float forMot) {
-        super.g(new Vec3D(sideMot, 0, forMot));
+        super.a(new Vec3D(sideMot, 0, forMot));
     }
 
     @Override

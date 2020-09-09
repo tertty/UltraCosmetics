@@ -54,7 +54,7 @@ public class CustomPathFinderGoalPanic extends PathfinderGoal {
     public boolean b() {
         // CraftBukkit start - introduce a temporary timeout hack until this is fixed properly
         if ((this.b.ticksLived - this.b.hurtTimestamp) > 100) {
-            this.b.b((EntityLiving) null);
+            this.b.setLastDamager((EntityLiving) null);
             return false;
         }
         // CraftBukkit end
