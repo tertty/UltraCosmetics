@@ -80,7 +80,7 @@ public class EntityUtil implements IEntityUtil {
             for (Player players : player.getWorld().getPlayers()) {
                 PacketSender.send(players, new PacketPlayOutSpawnEntityLiving(as));
                 PacketSender.send(players, new PacketPlayOutEntityMetadata(as.getId(), as.getDataWatcher(), false));
-                List<Pair<EnumItemSlot, net.minecraft.server.v1_16_R2.ItemStack>> list = new ArrayList<>();
+                List<Pair<EnumItemSlot, ItemStack>> list = new ArrayList<>();
                 list.add(new Pair(EnumItemSlot.HEAD, CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(org.bukkit.Material.PACKED_ICE))));
                 PacketSender.send(players, new PacketPlayOutEntityEquipment(as.getId(), list));
             }
@@ -125,18 +125,22 @@ public class EntityUtil implements IEntityUtil {
         PathfinderGoalSelector targetSelector = nmsEntity.targetSelector;
 
         try {
-            Field brField = EntityLiving.class.getDeclaredField("bn");
+            // Corresponds to net.minecraft.world.entity.EntityLiving#brain
+            Field brField = EntityLiving.class.getDeclaredField("bg");
             brField.setAccessible(true);
             BehaviorController<?> controller = (BehaviorController<?>) brField.get(nmsEntity);
 
+            // Corresponds to net.minecraft.world.entity.ai.Brain#memories
             Field memoriesField = BehaviorController.class.getDeclaredField("memories");
             memoriesField.setAccessible(true);
             memoriesField.set(controller, new HashMap<>());
 
+            // Corresponds to net.minecraft.world.entity.ai.Brain#sensors
             Field sensorsField = BehaviorController.class.getDeclaredField("sensors");
             sensorsField.setAccessible(true);
             sensorsField.set(controller, new LinkedHashMap<>());
 
+            // Corresponds to net.minecraft.world.entity.ai.Brain#availableBehaviorsByPriority
             Field cField = BehaviorController.class.getDeclaredField("e");
             cField.setAccessible(true);
             cField.set(controller, new TreeMap<>());
@@ -146,17 +150,20 @@ public class EntityUtil implements IEntityUtil {
 
         try {
             Field dField;
+            // Corresponds to net.minecraft.world.entity.ai.goal.GoalSelector#availableGoals
             dField = PathfinderGoalSelector.class.getDeclaredField("d");
             dField.setAccessible(true);
             dField.set(goalSelector, new LinkedHashSet<>());
             dField.set(targetSelector, new LinkedHashSet<>());
 
+            // Corresponds to net.minecraft.world.entity.ai.goal.GoalSelector#lockedFlags
             Field cField;
             cField = PathfinderGoalSelector.class.getDeclaredField("c");
             cField.setAccessible(true);
             dField.set(goalSelector, new LinkedHashSet<>());
             cField.set(targetSelector, new EnumMap<>(PathfinderGoal.Type.class));
 
+            // Corresponds to net.minecraft.world.entity.ai.goal.GoalSelector#disabledFlags
             Field fField;
             fField = PathfinderGoalSelector.class.getDeclaredField("f");
             fField.setAccessible(true);
@@ -186,7 +193,7 @@ public class EntityUtil implements IEntityUtil {
 
         if (loc == null) return;
 
-        ec.ak = (int) loc.getYaw();
+        ec.aC = loc.getYaw();
         PathEntity path = ec.getNavigation().a(loc.getX(), loc.getY(), loc.getZ(), 1);
         ec.getNavigation().a(path, 2);
     }

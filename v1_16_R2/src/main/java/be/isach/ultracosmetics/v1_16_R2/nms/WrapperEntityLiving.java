@@ -57,12 +57,12 @@ public class WrapperEntityLiving extends WrapperEntity {
 
     // Corresponds to jumping
     public boolean isJumping() {
-        return getField("jumping", EntityLiving.class, Boolean.class);
+        return getField("aQ", EntityLiving.class, Boolean.class);
     }
 
     // Corresponds to jumping
     public void setJumping(boolean jumping) {
-        setField("jumping", EntityLiving.class, jumping);
+        setField("aQ", EntityLiving.class, jumping);
     }
 
     // Corresponds to yBodyRotO
@@ -77,32 +77,32 @@ public class WrapperEntityLiving extends WrapperEntity {
 
     // Corresponds to animationSpeedOld
     public float getPrevLimbSwingAmount() {
-        return handle.aB;
+        return handle.au;
     }
 
     // Corresponds to animationSpeedOld
     public void setPrevLimbSwingAmount(float prevLimbSwingAmount) {
-        handle.aB = prevLimbSwingAmount;
+        handle.au = prevLimbSwingAmount;
     }
 
     // Corresponds to animationSpeed
     public float getLimbSwingAmount() {
-        return handle.aC;
+        return handle.av;
     }
 
     // Corresponds to animationSpeed
     public void setLimbSwingAmount(float limbSwingAmount) {
-        handle.aC = limbSwingAmount;
+        handle.av = limbSwingAmount;
     }
 
     // Corresponds to animationPosition
     public float getLimbSwing() {
-        return handle.aD;
+        return handle.aw;
     }
 
     // Corresponds to animationPosition
     public void setLimbSwing(float limbSwing) {
-        handle.aD = limbSwing;
+        handle.aw = limbSwing;
     }
 
     // Corresponds to getSpeed
@@ -112,7 +112,7 @@ public class WrapperEntityLiving extends WrapperEntity {
 
     // Corresponds to setSpeed
     public void setMoveSpeed(float moveSpeed) {
-        handle.n(moveSpeed);
+        handle.q(moveSpeed);
     }
 
     @Override

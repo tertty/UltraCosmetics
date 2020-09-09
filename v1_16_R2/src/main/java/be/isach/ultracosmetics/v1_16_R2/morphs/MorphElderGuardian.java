@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.v1_16_R2.customentities.CustomEntityFirework;
 import be.isach.ultracosmetics.v1_16_R2.customentities.CustomGuardian;
+import net.minecraft.server.v1_16_R2.Entity;
 import net.minecraft.server.v1_16_R2.EntityTypes;
 import net.minecraft.server.v1_16_R2.World;
 import org.bukkit.Bukkit;
@@ -17,7 +18,6 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_16_R2.CraftWorld;
 import org.bukkit.craftbukkit.v1_16_R2.entity.CraftEntity;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
@@ -36,7 +36,7 @@ public class MorphElderGuardian extends Morph {
     /**
      * List of the custom entities.
      */
-    public static List<net.minecraft.server.v1_16_R2.Entity> customEntities = new ArrayList<>();
+    public static List<Entity> customEntities = new ArrayList<>();
 
     private boolean cooldown;
     private CustomGuardian customGuardian;
@@ -90,7 +90,7 @@ public class MorphElderGuardian extends Morph {
             Location current = FROM.clone();
 
             for (int i = 0; i < 10; i++) {
-                for (Entity entity : current.getWorld().getNearbyEntities(current, 4.5, 4.5, 4.5))
+                for (org.bukkit.entity.Entity entity : current.getWorld().getNearbyEntities(current, 4.5, 4.5, 4.5))
                     if (entity instanceof LivingEntity
                             && entity != getPlayer())
                         MathUtils.applyVelocity(entity, new Vector(0, 0.5d, 0));
