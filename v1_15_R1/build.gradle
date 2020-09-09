@@ -1,4 +1,6 @@
 dependencies {
     compileOnly 'org.spigotmc:spigot115:1.15'
+    //compileOnly 'org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT'
+    //compile 'com.mojang:authlib:1.5.21'
     compile project(':core')
 }
