@@ -107,7 +107,7 @@ public class WrapperEntityLiving extends WrapperEntity {
 
     // Corresponds to getSpeed
     public float getMoveSpeed() {
-        //return handle.dM();
+        //return handle.g();
         return 0;
     }
 
