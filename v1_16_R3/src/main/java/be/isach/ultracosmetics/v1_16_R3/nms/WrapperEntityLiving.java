@@ -1,6 +1,6 @@
-package be.isach.ultracosmetics.v1_16_R2.nms;
+package be.isach.ultracosmetics.v1_16_R3.nms;
 
-import net.minecraft.server.v1_16_R2.EntityLiving;
+import net.minecraft.server.v1_16_R3.EntityLiving;
 
 /**
  * @author RadBuilder
@@ -107,7 +107,8 @@ public class WrapperEntityLiving extends WrapperEntity {
 
     // Corresponds to getSpeed
     public float getMoveSpeed() {
-        return handle.dM();
+        //return handle.g();
+        return 0;
     }
 
     // Corresponds to setSpeed

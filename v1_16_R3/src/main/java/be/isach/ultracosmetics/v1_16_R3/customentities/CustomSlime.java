@@ -1,10 +1,10 @@
-package be.isach.ultracosmetics.v1_16_R2.customentities;
+package be.isach.ultracosmetics.v1_16_R3.customentities;
 
 import be.isach.ultracosmetics.cosmetics.mounts.IMountCustomEntity;
-import be.isach.ultracosmetics.v1_16_R2.EntityBase;
-import be.isach.ultracosmetics.v1_16_R2.nms.WrapperEntityHuman;
-import be.isach.ultracosmetics.v1_16_R2.nms.WrapperEntityInsentient;
-import net.minecraft.server.v1_16_R2.*;
+import be.isach.ultracosmetics.v1_16_R3.EntityBase;
+import be.isach.ultracosmetics.v1_16_R3.nms.WrapperEntityHuman;
+import be.isach.ultracosmetics.v1_16_R3.nms.WrapperEntityInsentient;
+import net.minecraft.server.v1_16_R3.*;
 import org.bukkit.entity.Entity;
 
 /**

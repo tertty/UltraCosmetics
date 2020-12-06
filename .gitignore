@@ -136,4 +136,5 @@ testserver
 testserver/*
 
 hts*
-.vscode/*
+
+.vscode/
